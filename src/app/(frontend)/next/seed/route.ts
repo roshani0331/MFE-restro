@@ -12,8 +12,16 @@ export async function POST(): Promise<Response> {
   // Authenticate by passing request headers
   const { user } = await payload.auth({ headers: requestHeaders })
 
+  // Check if any users exist - allow seeding if no users exist (first-time setup)
   if (!user) {
-    return new Response('Action forbidden.', { status: 403 })
+    const existingUsers = await payload.find({
+      collection: 'users',
+      limit: 1,
+    })
+    
+    if (existingUsers.totalDocs > 0) {
+      return new Response('Action forbidden.', { status: 403 })
+    }
   }
 
   try {

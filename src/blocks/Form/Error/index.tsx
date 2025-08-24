@@ -2,14 +2,20 @@
 
 import * as React from 'react'
 import { useFormContext } from 'react-hook-form'
+import { useParams } from 'next/navigation'
+import { useTranslations } from '@/lib/i18n'
 
 export const Error = ({ name }: { name: string }) => {
   const {
     formState: { errors },
   } = useFormContext()
+  const params = useParams()
+  const locale = params?.locale as string || 'en'
+  const { t } = useTranslations(locale)
+  
   return (
-    <div className="mt-2 text-red-500 text-sm">
-      {(errors[name]?.message as string) || 'This field is required'}
+    <div className="text-base text-red-600 font-medium animate-fade-in-up">
+      {(errors[name]?.message as string) || t('common.fieldRequired')}
     </div>
   )
 }

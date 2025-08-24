@@ -57,80 +57,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
               tag: 'h1',
               version: 1,
             },
-            {
-              type: 'paragraph',
-              children: [
-                {
-                  type: 'link',
-                  children: [
-                    {
-                      type: 'text',
-                      detail: 0,
-                      format: 0,
-                      mode: 'normal',
-                      style: '',
-                      text: 'Visit the admin dashboard',
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  fields: {
-                    linkType: 'custom',
-                    newTab: false,
-                    url: '/admin',
-                  },
-                  format: '',
-                  indent: 0,
-                  version: 3,
-                },
-                {
-                  type: 'text',
-                  detail: 0,
-                  format: 0,
-                  mode: 'normal',
-                  style: '',
-                  text: " to begin managing this site's content. The code for this template is completely open-source and can be found ",
-                  version: 1,
-                },
-                {
-                  type: 'link',
-                  children: [
-                    {
-                      type: 'text',
-                      detail: 0,
-                      format: 0,
-                      mode: 'normal',
-                      style: '',
-                      text: 'on our Github',
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  fields: {
-                    linkType: 'custom',
-                    newTab: true,
-                    url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
-                  },
-                  format: '',
-                  indent: 0,
-                  version: 3,
-                },
-                {
-                  type: 'text',
-                  detail: 0,
-                  format: 0,
-                  mode: 'normal',
-                  style: '',
-                  text: '. ',
-                  version: 1,
-                },
-              ],
-              direction: 'ltr',
-              format: '',
-              indent: 0,
-              textFormat: 0,
-              version: 1,
-            },
+
           ],
           direction: 'ltr',
           format: '',
@@ -140,6 +67,180 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
       },
     },
     layout: [
+      {
+        blockName: 'Hero Section',
+        blockType: 'hero',
+        title: 'Welcome to RestroWorks',
+        subtitle: 'Powerful CMS for Modern Restaurants',
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Build stunning restaurant websites with our powerful content management system. Manage menus, reservations, and content with ease.',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                textFormat: 0,
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        },
+        linkGroup: [
+          {
+            link: {
+              type: 'custom',
+              appearance: 'primary',
+              label: 'Get Started',
+              url: '/contact',
+            },
+          },
+          {
+            link: {
+              type: 'custom',
+              appearance: 'secondary',
+              label: 'Learn More',
+              url: '/about',
+            },
+          },
+        ],
+        backgroundColor: 'light',
+        alignment: 'center',
+      },
+      {
+        blockName: 'Features Section',
+        blockType: 'feature',
+        richText: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'heading',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Why Choose RestroWorks?',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                tag: 'h2',
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Discover the features that make RestroWorks the perfect choice for your restaurant.',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                textFormat: 0,
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        },
+        features: [
+          {
+            title: 'Easy Menu Management',
+            description: 'Update your menu items, prices, and descriptions in real-time with our intuitive interface.',
+            icon: 'menu',
+          },
+          {
+            title: 'Reservation System',
+            description: 'Manage table bookings and customer reservations seamlessly through the admin dashboard.',
+            icon: 'calendar',
+          },
+          {
+            title: 'Multilingual Support',
+            description: 'Serve customers in multiple languages with built-in localization features.',
+            icon: 'globe',
+          },
+        ],
+      },
+      {
+        blockName: 'Customer Testimonials',
+        blockType: 'testimonial',
+        richText: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'heading',
+                children: [
+                  {
+                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'What Our Customers Say',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                tag: 'h2',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        },
+        testimonials: [
+          {
+            quote: 'RestroWorks transformed how we manage our restaurant. The interface is intuitive and our staff loves it!',
+            author: 'Maria Rodriguez',
+            role: 'Restaurant Owner',
+            company: 'Bella Vista Restaurant',
+          },
+          {
+            quote: 'The multilingual support helped us serve our diverse customer base better. Highly recommended!',
+            author: 'James Chen',
+            role: 'Manager',
+            company: 'Golden Dragon Bistro',
+          },
+        ],
+      },
       {
         blockName: 'Content Block',
         blockType: 'content',
@@ -513,62 +614,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
         blockType: 'mediaBlock',
         media: metaImage.id,
       },
-      {
-        blockName: 'Archive Block',
-        blockType: 'archive',
-        categories: [],
-        introContent: {
-          root: {
-            type: 'root',
-            children: [
-              {
-                type: 'heading',
-                children: [
-                  {
-                    type: 'text',
-                    detail: 0,
-                    format: 0,
-                    mode: 'normal',
-                    style: '',
-                    text: 'Recent posts',
-                    version: 1,
-                  },
-                ],
-                direction: 'ltr',
-                format: '',
-                indent: 0,
-                tag: 'h3',
-                version: 1,
-              },
-              {
-                type: 'paragraph',
-                children: [
-                  {
-                    type: 'text',
-                    detail: 0,
-                    format: 0,
-                    mode: 'normal',
-                    style: '',
-                    text: 'The posts below are displayed in an "Archive" layout building block which is an extremely powerful way to display documents on a page. It can be auto-populated by collection or by category, or posts can be individually selected. Pagination controls will automatically appear if the number of results exceeds the number of items per page.',
-                    version: 1,
-                  },
-                ],
-                direction: 'ltr',
-                format: '',
-                indent: 0,
-                textFormat: 0,
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            version: 1,
-          },
-        },
-        populateBy: 'collection',
-        relationTo: 'posts',
-      },
+
       {
         blockName: 'CTA',
         blockType: 'cta',

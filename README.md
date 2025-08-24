@@ -53,7 +53,7 @@ Before starting, ensure you have:
 
 ```bash
 # Clone the repository
-git clone <your-repo-url> restroworks-cms
+git clone https://github.com/roshani0331/MFE-restro.git
 cd restroworks-cms
 
 # Install dependencies
@@ -1415,5 +1415,6 @@ If you have any issues or questions:
 - [Next.js](https://nextjs.org) for the React framework
 - [TailwindCSS](https://tailwindcss.com) for the utility-first CSS framework
 - [shadcn/ui](https://ui.shadcn.com) for the beautiful UI components
-#   M F E - r e s t r o  
+#   M F E - r e s t r o 
+ 
  
