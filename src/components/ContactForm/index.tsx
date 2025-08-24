@@ -297,10 +297,12 @@ export const ContactForm: React.FC<{
             )}
           </button>
           <p id="submit-help" className="mt-3 xs:mt-4 text-sm xs:text-base text-gray-600 dark:text-gray-400 text-center">
-            We'll respond to your message within 24 hours
+            We&apos;ll respond to your message within 24 hours
           </p>
         </div>
       </form>
     </div>
   )
 })
+
+ContactForm.displayName = 'ContactForm'

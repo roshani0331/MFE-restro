@@ -42,17 +42,15 @@ const nextConfig = {
       '@payloadcms/ui',
       '@payloadcms/richtext-lexical'
     ],
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  },
+  
+  // Turbopack configuration
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
-    },
-    // Enable server components logging for debugging
-    logging: {
-      level: 'error',
     },
   },
   

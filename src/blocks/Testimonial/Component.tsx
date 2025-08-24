@@ -44,7 +44,7 @@ export const TestimonialBlock: React.FC<{
                   </div>
                   
                   <p className="text-lg mb-6 italic text-gray-700 dark:text-gray-300 flex-grow">
-                    "{testimonial.quote}"
+                    &ldquo;{testimonial.quote}&rdquo;
                   </p>
                   
                   <div className="flex items-center mt-auto">

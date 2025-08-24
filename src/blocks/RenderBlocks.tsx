@@ -56,3 +56,5 @@ export const RenderBlocks: React.FC<{
 
   return null
 })
+
+RenderBlocks.displayName = 'RenderBlocks'
