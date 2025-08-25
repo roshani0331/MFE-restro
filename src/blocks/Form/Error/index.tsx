@@ -19,3 +19,5 @@ export const Error = ({ name }: { name: string }) => {
     </div>
   )
 }
+
+Error.displayName = 'Error'

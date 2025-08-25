@@ -7,7 +7,7 @@ export const translations = {
     // Contact Form
     contactForm: {
       title: 'Get in Touch',
-      subtitle: 'We\'d love to hear from you. Send us a message and we\'ll respond as soon as possible.',
+      subtitle: 'We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.',
       nameLabel: 'Full Name',
       namePlaceholder: 'Enter your full name',
       emailLabel: 'Email Address',
@@ -19,7 +19,7 @@ export const translations = {
       messagePlaceholder: 'Tell us about your project, questions, or how we can help you...',
       submitButton: 'Send Message',
       submittingButton: 'Sending...',
-      successMessage: 'Thank you for your message! We\'ll get back to you soon.',
+      successMessage: 'Thank you for your message! We&apos;ll get back to you soon.',
       // Validation messages
       nameRequired: 'Name is required',
       emailRequired: 'Email is required',

@@ -28,6 +28,10 @@ const eslintConfig = [
           caughtErrorsIgnorePattern: '^(_|ignore)',
         },
       ],
+      // Add stricter rules to match Vercel's requirements
+      'react/no-unescaped-entities': 'error',
+      'react/display-name': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
   {

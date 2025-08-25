@@ -27,3 +27,5 @@ export const Logo = (props: Props) => {
     />
   )
 }
+
+Logo.displayName = 'Logo'
