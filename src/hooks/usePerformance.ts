@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react'
  * Tracks render times and provides performance metrics
  */
 export const usePerformance = (componentName: string) => {
-  const renderStartTime = useRef<number>()
+  const renderStartTime = useRef<number>(0)
   const renderCount = useRef<number>(0)
   const totalRenderTime = useRef<number>(0)
 
@@ -50,7 +50,7 @@ export const useMountTime = (componentName: string) => {
     if (process.env.NODE_ENV === 'development') {
       console.log(`[Mount Time] ${componentName}: ${mountTime.toFixed(2)}ms`)
     }
-  }, [])
+  }, [componentName])
 }
 
 /**

@@ -15,7 +15,7 @@ interface NavigationProps {
 
 export const Navigation: React.FC<NavigationProps> = memo(({ navItems = [] }) => {
   const { locale } = useParams() as { locale: string };
-  const { t } = useTranslations(locale);
+  const { t } = useTranslations(locale as "en" | "es");
   
   // Memoize default navigation items
   const defaultNavItems = useMemo(() => [
@@ -67,3 +67,5 @@ export const Navigation: React.FC<NavigationProps> = memo(({ navItems = [] }) =>
     </nav>
   );
 });
+
+Navigation.displayName = 'Navigation';

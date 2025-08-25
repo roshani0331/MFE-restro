@@ -11,7 +11,7 @@ export const Header: React.FC<{
   header?: any
 }> = memo(({ header }) => {
   const { locale } = useParams() as { locale: string }
-  const { t } = useTranslations(locale || 'en')
+  const { t } = useTranslations((locale || 'en') as "en" | "es")
   const navItems = header?.navItems || []
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -115,3 +115,5 @@ export const Header: React.FC<{
     </header>
   )
 })
+
+Header.displayName = 'Header'

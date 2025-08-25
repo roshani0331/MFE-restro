@@ -842,7 +842,7 @@ To seed the database with a few pages, posts, and projects you can click the 'se
 The seed script will also create a demo user for demonstration purposes only:
 
 - Demo Author
-  - Email: `demo-author@payloadcms.com`
+  - Email: `demo-author@example.com`
   - Password: `password`
 
 > NOTICE: seeding the database is destructive because it drops your current database to populate a fresh one from the seed template. Only run this command if you are starting a new project or can afford to lose your current data.

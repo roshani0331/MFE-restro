@@ -126,8 +126,6 @@ export async function POST(request: Request) {
       data: {
         ...sanitizedData,
         status: 'new',
-        submittedAt: new Date().toISOString(),
-        ipAddress: ip,
       },
     })
 

@@ -37,7 +37,7 @@ async function createFirstUser() {
     console.log('Password: password123')
     
   } catch (error) {
-    console.error('Error creating first user:', error.message)
+    console.log('Error creating first user:', error instanceof Error ? error.message : String(error))
   } finally {
     process.exit(0)
   }

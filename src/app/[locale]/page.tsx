@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     // Use static fallback data if no home page is found in database
     let pageData = homePage.docs[0]
     if (!pageData) {
-      pageData = homeStatic
+      pageData = homeStatic as any
     }
 
     const { meta } = pageData
@@ -66,7 +66,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     // Use static fallback data if no home page is found in database
     let pageData = homePage.docs[0]
     if (!pageData) {
-      pageData = homeStatic
+      pageData = homeStatic as any
     }
 
     const { layout, hero } = pageData

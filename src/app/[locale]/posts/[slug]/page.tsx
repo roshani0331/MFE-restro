@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
-import RichText from '@/components/RichText'
+// import RichText from '@/components/RichText' // Unused import
 import type { Post } from '@/payload-types'
 import config from '@payload-config'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -34,7 +34,7 @@ const queryPostBySlug = cache(async ({ slug, locale }: { slug: string; locale: s
         equals: slug,
       },
     },
-    locale,
+    locale: locale as "all" | "en" | "es",
   })
 
   return result.docs?.[0] || null
@@ -54,10 +54,7 @@ const Post = async ({ params }: Args) => {
     <article className="pt-16 pb-16">
       <AdminBar
         adminBarProps={{
-          preview: {
-            url: `/posts/${post.slug}`,
-            label: 'Preview',
-          },
+          preview: true,
         }}
       />
       
@@ -112,9 +109,6 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
   }
 
   return generateMeta({
-    title: post.meta?.title || post.title,
-    description: post.meta?.description || post.excerpt,
-    image: post.meta?.image,
-    url: `/posts/${post.slug}`,
+    doc: post,
   })
 }

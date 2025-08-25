@@ -80,47 +80,20 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
     },
   },
   meta: {
-    description: {
-      en: 'An open-source website built with Payload and Next.js.',
-      es: 'Un sitio web de código abierto construido con Payload y Next.js.',
-    },
-    title: {
-      en: 'Payload Website Template',
-      es: 'Plantilla de Sitio Web Payload',
-    },
+    description: 'An open-source website built with Payload and Next.js.',
+    title: 'Payload Website Template',
   },
-  title: {
-    en: 'Home',
-    es: 'Inicio',
-  },
+  title: 'Home',
   layout: [
     {
       blockType: 'hero',
       blockName: 'Main Hero',
-      heroType: 'highImpact',
-      richText: {
+      title: 'Welcome to RestroWorks',
+      subtitle: 'Your complete restaurant management solution',
+      content: {
         root: {
           type: 'root',
           children: [
-            {
-              type: 'heading',
-              children: [
-                {
-                  type: 'text',
-                  detail: 0,
-                  format: 0,
-                  mode: 'normal',
-                  style: '',
-                  text: 'Welcome to RestroWorks',
-                  version: 1,
-                },
-              ],
-              direction: 'ltr',
-              format: '',
-              indent: 0,
-              tag: 'h1',
-              version: 1,
-            },
             {
               type: 'paragraph',
               children: [
@@ -130,7 +103,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'Your complete restaurant management solution. Streamline operations, enhance customer experience, and grow your business with our comprehensive platform.',
+                  text: 'Streamline operations, enhance customer experience, and grow your business with our comprehensive platform.',
                   version: 1,
                 },
               ],

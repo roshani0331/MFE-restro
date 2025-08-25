@@ -6,9 +6,7 @@ import { home } from './home'
 import { image1 } from './image-1'
 import { image2 } from './image-2'
 import { imageHero1 } from './image-hero-1'
-import { post1 } from './post-1'
-import { post2 } from './post-2'
-import { post3 } from './post-3'
+// Post files removed - not available
 
 const collections: CollectionSlug[] = [
   'categories',
@@ -18,7 +16,7 @@ const collections: CollectionSlug[] = [
   'form-submissions',
   'search',
 ]
-const globals: GlobalSlug[] = ['header', 'footer']
+const _globals: GlobalSlug[] = ['header', 'footer']
 
 // Next.js revalidation errors are normal when seeding the database without a server running
 // i.e. running `yarn seed` locally instead of using the admin UI within an active app
@@ -102,7 +100,7 @@ export const seed = async ({
     ),
   ])
 
-  const [demoAuthor, image1Doc, image2Doc, image3Doc, imageHomeDoc] = await Promise.all([
+  const [_demoAuthor, _image1Doc, image2Doc, _image3Doc, imageHomeDoc] = await Promise.all([
     payload.create({
       collection: 'users',
       data: {
@@ -245,20 +243,14 @@ export const seed = async ({
           {
             link: {
               type: 'custom',
-              label: {
-                en: 'Posts',
-                es: 'Publicaciones',
-              },
+              label: 'Posts',
               url: '/posts',
             },
           },
           {
             link: {
               type: 'reference',
-              label: {
-                en: 'Contact',
-                es: 'Contacto',
-              },
+              label: 'Contact',
               reference: {
                 relationTo: 'pages',
                 value: contactPage.id,
@@ -271,10 +263,7 @@ export const seed = async ({
     payload.updateGlobal({
       slug: 'footer',
       data: {
-        description: {
-          en: 'Follow us on social media',
-          es: 'Síguenos en las redes sociales',
-        },
+        description: 'Follow us on social media',
         socialLinks: [
           {
             platform: 'facebook',

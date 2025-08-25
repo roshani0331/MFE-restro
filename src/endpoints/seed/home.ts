@@ -179,12 +179,12 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
           {
             title: 'Easy Menu Management',
             description: 'Update your menu items, prices, and descriptions in real-time with our intuitive interface.',
-            icon: 'menu',
+            icon: 'clipboard',
           },
           {
             title: 'Reservation System',
             description: 'Manage table bookings and customer reservations seamlessly through the admin dashboard.',
-            icon: 'calendar',
+            icon: 'clock',
           },
           {
             title: 'Multilingual Support',

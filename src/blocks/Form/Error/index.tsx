@@ -11,7 +11,7 @@ export const Error = ({ name }: { name: string }) => {
   } = useFormContext()
   const params = useParams()
   const locale = params?.locale as string || 'en'
-  const { t } = useTranslations(locale)
+  const { t } = useTranslations(locale as "en" | "es")
   
   return (
     <div className="text-base text-red-600 font-medium animate-fade-in-up">

@@ -18,7 +18,7 @@ export const Email: React.FC<
 > = ({ name, defaultValue, errors, label, register, required, width }) => {
   const params = useParams()
   const locale = params?.locale as string || 'en'
-  const { t } = useTranslations(locale)
+  const { t } = useTranslations(locale as "en" | "es")
   return (
     <Width width={width}>
       <div className="group">

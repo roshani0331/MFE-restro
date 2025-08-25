@@ -94,7 +94,7 @@ export const createLazyComponent = <P extends object>(
  * Intersection Observer hook for lazy loading components when they enter viewport
  */
 export const useIntersectionObserver = (
-  ref: React.RefObject<Element>,
+  ref: React.RefObject<HTMLDivElement | null>,
   options?: IntersectionObserverInit
 ) => {
   const [isIntersecting, setIsIntersecting] = React.useState(false)

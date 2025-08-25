@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-import type { Post } from '@/payload-types'
-import config from '@payload-config'
+// import React, { cache } from 'react' // Unused import
+// import type { Post } from '@/payload-types' // Unused import
+// import config from '@payload-config' // Unused import
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
@@ -41,7 +41,7 @@ const Posts = async ({ params, searchParams }: Args) => {
         equals: 'published',
       },
     },
-    locale,
+    locale: locale as "all" | "en" | "es",
   })
 
   return (
@@ -54,7 +54,6 @@ const Posts = async ({ params, searchParams }: Args) => {
 
       <div className="container mb-8">
         <PageRange
-          collection="posts"
           currentPage={posts.page}
           limit={limit}
           totalDocs={posts.totalDocs}
@@ -75,7 +74,7 @@ const Posts = async ({ params, searchParams }: Args) => {
 export default Posts
 
 export async function generateMetadata({ params }: Args): Promise<Metadata> {
-  const { locale } = await params
+  const { locale: _locale } = await params
   return generateMeta({
     title: 'Posts',
     description: 'Browse our latest posts and articles.',

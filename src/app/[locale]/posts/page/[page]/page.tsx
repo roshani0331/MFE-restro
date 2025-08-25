@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache, Suspense } from 'react'
-import type { Post } from '@/payload-types'
+import React, { Suspense } from 'react'
+// import { cache } from 'react' // Unused import
+// import type { Post } from '@/payload-types' // Unused import
 import config from '@payload-config'
 import dynamic from 'next/dynamic'
 import configPromise from '@payload-config'
@@ -55,7 +56,7 @@ const PostsPage = async ({ params }: Args) => {
         equals: 'published',
       },
     },
-    locale,
+    locale: locale as "all" | "en" | "es",
   })
 
   if (page > posts.totalPages) {
@@ -73,22 +74,21 @@ const PostsPage = async ({ params }: Args) => {
       <div className="container mb-8">
         <Suspense fallback={<div className="animate-pulse bg-gray-200 h-6 w-32 rounded mb-4"></div>}>
           <PageRange
-            collection="posts"
             currentPage={page}
             limit={limit}
-            totalDocs={totalDocs}
+            totalDocs={posts.totalDocs}
           />
         </Suspense>
       </div>
 
       <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64 rounded-lg mb-8"></div>}>
-        <CollectionArchive posts={posts} />
+        <CollectionArchive posts={posts.docs} />
       </Suspense>
 
       <div className="container">
-        {totalPages > 1 && (
+        {posts.totalPages > 1 && (
           <Suspense fallback={<div className="animate-pulse bg-gray-200 h-12 w-64 rounded mx-auto"></div>}>
-            <Pagination page={page} totalPages={totalPages} />
+            <Pagination page={page} totalPages={posts.totalPages} />
           </Suspense>
         )}
       </div>
@@ -118,7 +118,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Args): Promise<Metadata> {
-  const { page, locale } = await params
+  const { page, locale: _locale } = await params
   return generateMeta({
     title: `Posts - Page ${page}`,
     description: `Browse our latest posts and articles - Page ${page}.`,
