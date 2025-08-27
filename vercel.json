@@ -12,5 +12,6 @@
     "app/api/**/*.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "outputFileTracing": false
 }
