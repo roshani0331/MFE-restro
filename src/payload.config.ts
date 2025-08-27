@@ -6,6 +6,9 @@ import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
+// Check if we're in build mode to disable database connection
+const isBuildMode = process.env.SKIP_DB_VALIDATION === 'true'
+
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
@@ -68,10 +71,20 @@ const config = buildConfig({
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
+    url: isBuildMode ? 'mongodb://localhost:27017/build-temp' : (process.env.DATABASE_URI || 'mongodb://localhost:27017/restroworks-cms'),
+    connectOptions: {
+        maxPoolSize: isBuildMode ? 1 : 10,
+        serverSelectionTimeoutMS: isBuildMode ? 100 : 5000,
+        socketTimeoutMS: isBuildMode ? 100 : 45000,
+        bufferCommands: false,
+      },
   }),
   collections: [Pages, Posts, Media, Users, ContactSubmissions, Categories],
-  cors: [getServerSideURL()].filter(Boolean),
+  cors: [
+    getServerSideURL(),
+    ...(process.env.VERCEL_PROJECT_PRODUCTION_URL ? [`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`] : []),
+    'https://restro-payload-11.vercel.app',
+  ],
   globals: [Header, Footer],
   plugins: [
     ...plugins,

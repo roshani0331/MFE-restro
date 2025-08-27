@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build --experimental-build-mode compile",
     "build:analyze": "cross-env ANALYZE=true NODE_OPTIONS=--no-deprecation next build",
     "build:production": "cross-env NODE_ENV=production NODE_OPTIONS=--no-deprecation next build",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
@@ -63,7 +63,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "7.45.4",
-    "sharp": "0.34.2",
+    "sharp": "^0.34.3",
     "slate": "^0.118.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",

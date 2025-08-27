@@ -15,11 +15,18 @@ const RenderBlocks = dynamic(() => import('@/blocks/RenderBlocks').then(mod => (
   loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded-lg mb-4"></div>
 })
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'es' },
+  ]
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const payload = await getPayload({ config })
   
   try {
+    const payload = await getPayload({ config })
     const contactPage = await payload.find({
       collection: 'pages',
       where: {
@@ -30,37 +37,35 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale: locale as "all" | "en" | "es",
     })
 
-    if (!contactPage.docs[0]) {
+    if (contactPage.docs[0]) {
+      const { meta } = contactPage.docs[0]
       return {
-        title: 'Contact Us',
-        description: 'Get in touch with our team',
+        title: meta?.title || 'Contact Us',
+        description: meta?.description || 'Get in touch with our team',
+        openGraph: meta?.image && typeof meta.image === 'object' && 'url' in meta.image && meta.image.url
+          ? {
+              images: [{ url: meta.image.url }],
+            }
+          : undefined,
       }
     }
+  } catch (error) {
+    console.log('Contact page not found in database, using fallback metadata')
+  }
 
-    const { meta } = contactPage.docs[0]
-
-    return {
-      title: meta?.title || 'Contact Us',
-      description: meta?.description || 'Get in touch with our team',
-      openGraph: meta?.image && typeof meta.image === 'object' && 'url' in meta.image && meta.image.url
-        ? {
-            images: [{ url: meta.image.url }],
-          }
-        : undefined,
-    }
-  } catch (_error) {
-    return {
-      title: 'Contact Us',
-      description: 'Get in touch with our team',
-    }
+  // Fallback metadata when no contact page exists in database
+  return {
+    title: 'Contact Us',
+    description: 'Get in touch with our team',
   }
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const payload = await getPayload({ config })
+  let contactPageData = null
   
   try {
+    const payload = await getPayload({ config })
     const contactPage = await payload.find({
       collection: 'pages',
       where: {
@@ -71,11 +76,14 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       locale: locale as "all" | "en" | "es",
     })
 
-    if (!contactPage.docs[0]) {
-      notFound()
+    if (contactPage.docs[0]) {
+      contactPageData = contactPage.docs[0]
     }
+  } catch (error) {
+    console.log('Contact page not found in database, using fallback content')
+  }
 
-    const { layout, hero } = contactPage.docs[0]
+  const { layout, hero } = contactPageData || { layout: null, hero: null }
 
     return (
       <main>
@@ -178,8 +186,4 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         )}
       </main>
     )
-  } catch (error) {
-    console.error('Error fetching contact page:', error)
-    notFound()
-  }
 }

@@ -4,7 +4,12 @@ declare global {
       PAYLOAD_SECRET: string
       DATABASE_URI: string
       NEXT_PUBLIC_SERVER_URL: string
-      VERCEL_PROJECT_PRODUCTION_URL: string
+      VERCEL_PROJECT_PRODUCTION_URL?: string
+      CRON_SECRET: string
+      PREVIEW_SECRET: string
+      NODE_ENV: 'development' | 'production' | 'test'
+      VERCEL?: string
+      SKIP_DB_VALIDATION?: string
     }
   }
 }
