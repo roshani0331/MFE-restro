@@ -3,7 +3,6 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "installCommand": "pnpm install",
-  "nodeVersion": "20.x",
   "env": {
     "SKIP_DB_VALIDATION": "true",
     "NODE_OPTIONS": "--no-deprecation",
